@@ -15,27 +15,14 @@ export class WalletController {
         return await this.walletService.fundWallet(fundWalletDto);
     }
 
-    @Get('transactions')
+    @Post('transactions')
     async getTransaction(
         @Req() req: any,
         @Res() res: Response,
-        @Query('type') type?: TransactionTypeEnum,
-        @Query('status') status?:TransactionStatusEnum,
-        @Query('amount') amount?: RangeI,
-        @Query('created_at') created_at?:RangeI,
-        @Query('sort') sort?: SortType,
-        @Query('batch') batch?: number
+        @Body() getTransactionsDto: GetTransactionsDto
     ):Promise<Response>{
-        const payload: Partial<GetTransactionsDto> = {
-            batch: batch ?? 1,
-            ...( type ? {type}: null ),
-            ...(status ? { status } : null),
-            ...(amount ? { amount } : null),
-            ...(created_at ? { created_at } : null),
-            ...(sort ? { sort } : null)
-        }
-
-        const data = await this.walletService.getTransactions(payload, req.user.userId)
+       
+        const data = await this.walletService.getTransactions(getTransactionsDto, req.user.userId)
 
         return res.status(200).json(success('Transaction records fetched!', 200, data))
     }
