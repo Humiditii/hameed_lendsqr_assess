@@ -81,13 +81,13 @@ The following are the available API endpoints:
 
 - **POST /users/create**: Create a new user.
 - **POST /users/signin**: Sign in an existing user.
-- **GET /users/migrate**: Perform a migration for users (optional, based on the application setup).
+- **GET /users/migrate**: Perform a migration for tables (optional, based on the application setup).
 
 ### Wallet Routes
 
 - **POST /wallets/fund**: Fund a user's wallet.
 - **POST /wallets/withdraw**: Withdraw funds from a user's wallet.
-- **GET /wallets/transactions**: Get the list of transactions for a specific user's wallet.
+- **POST /wallets/transactions**: Get the list of transactions for a specific user's wallet.
 - **GET /wallets/balance**: Get the current balance of a user's wallet.
   
 For detailed documentation on the endpoints, you can view the postman documentation
@@ -100,11 +100,12 @@ The application uses a MySQL database to store wallet data and transactions. The
 
 You can import the Postman collection to easily test the API:
 
-[Postman Collection Link]()
+[Postman Collection Link](https://documenter.getpostman.com/view/10490824/2sAYBVhrkH)
 
 ## Base URL
 
-- **Base URL**: `http://localhost:3000`
+- **Base URL (local)**: `http://localhost:3000`
+ **Base URL (remote)**: `https://abdulhameed-lendsqr-be-test.onrender.com`
   
 Replace `localhost` with your server's domain or IP address if you're deploying this app remotely.
 
