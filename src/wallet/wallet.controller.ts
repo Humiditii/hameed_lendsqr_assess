@@ -49,7 +49,7 @@ export class WalletController {
         withdrawDto.userId = req.user.userId
         const data = await this.walletService.withdraw(withdrawDto)
 
-        return res.status(201).json(success('Balance fetched!', 201, data))
+        return res.status(201).json(success('withdraw done!', 201, data))
     }
 
 
